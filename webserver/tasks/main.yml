@@ -16,5 +16,5 @@
     path: "{{artifact_file}}"
   delegate_to: localhost
   register: artifact_file
-  changed_when: not artifact_file.stat.exists
+  changed_when: artifact_file.stat.exists
   notify: "deploy it"
