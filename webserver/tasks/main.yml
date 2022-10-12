@@ -1,2 +1,20 @@
 ---
 # tasks file for webserver
+- name: Ensure tomcat package is present
+  apt:
+    name: tomcat9
+    state: present
+    update_cache: true
+
+- name: Ensure tomcat is running
+  service:
+    name: tomcat9.service
+    state: started
+
+- name: Check new artifact exists
+  stat:
+    path: "{{artifact_file}}"
+  delegate_to: localhost
+  register: artifact_file
+  changed_when: not artifact_file.stat.exists
+  notify: "deploy it"

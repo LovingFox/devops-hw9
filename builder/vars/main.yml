@@ -1,7 +1,7 @@
 ---
 # vars file for builder
-remote_repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-repo_dir: /root/boxfuse
+remote_repo: "https://github.com/boxfuse/boxfuse-sample-java-war-hello.git"
+repo_dir: "/root/boxfuse"
 target_file: "{{repo_dir}}/target/hello-1.0.war"
-archive_dir: /root/
+archive_dir: "/root"
 archive_file: "{{archive_dir}}/hello-1.0.war"

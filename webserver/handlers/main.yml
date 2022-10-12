@@ -1,2 +1,20 @@
 ---
 # handlers file for webserver
+- name: Install new artifact
+  synchronize:
+    src: "{{artifact_file}}"
+    dest: "{{web_root_file}}"
+  listen: "deploy it"
+
+- name: Delete old artifact directory
+  file:
+    path: "{{web_root_dir}}"
+    state: absent
+  listen: "deploy it"
+
+- name: Delete new artifact locally
+  file:
+    path: "{{artifact_file}}"
+    state: absent
+  delegate_to: localhost
+  listen: "deploy it"
