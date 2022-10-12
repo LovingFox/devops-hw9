@@ -25,6 +25,8 @@
 - name: Check the artifact exists
   stat:
     path: "{{target_file}}"
+  register: artifact_file
+  changed_when: not artifact_file.stat.file_exists
   notify:
     - clean maven
     - build artifact
