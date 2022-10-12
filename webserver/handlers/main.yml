@@ -2,7 +2,8 @@
 # handlers file for webserver
 - name: Install new artifact
   synchronize:
-    src: "{{artifact_file}}"
+    mode: push
+    src: "{{archive_file}}"
     dest: "{{web_root_file}}"
   listen: "deploy it"
 
@@ -14,7 +15,7 @@
 
 - name: Delete new artifact locally
   file:
-    path: "{{artifact_file}}"
+    path: "{{archive_file}}"
     state: absent
   delegate_to: localhost
   listen: "deploy it"
