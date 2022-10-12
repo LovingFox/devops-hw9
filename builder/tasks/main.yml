@@ -16,19 +16,11 @@
     dest: "{{repo_dir}}"
     clone: true
     update: true
-  notify:
-    - clean maven
-    - build artifact
-    - fetch file
-    - backup artifact
+  notify: "build it"
 
 - name: Check the artifact exists
   stat:
     path: "{{target_file}}"
   register: artifact_file
   changed_when: not artifact_file.stat.exists
-  notify:
-    - clean maven
-    - build artifact
-    - fetch file
-    - backup artifact
+  notify: "build it"

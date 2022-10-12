@@ -1,4 +1,6 @@
 ---
+# Build an artifact on the host1
+# and copy it to the local machine
 - name: build an artifact
   hosts: host1
   become: true
@@ -7,6 +9,8 @@
     - builder
 
 
+# Copy the artifact to the host2 from the local machine
+# and start tomcat server on the host2
 - name: deploy an artifact
   hosts: host2
   become: true
