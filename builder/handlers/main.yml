@@ -12,7 +12,7 @@
 
 - name: fetch file
   synchronize:
-  mode: pull
+    mode: pull
     src: "{{target_file}}"
     dest: "{{archive_file}}"
 
