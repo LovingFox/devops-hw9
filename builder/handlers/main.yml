@@ -1,29 +1,25 @@
 ---
 # handlers file for builder
-# clean project directory
-- name: clean maven project
+- name: Clean maven project directory
   shell:
     chdir: "{{repo_dir}}"
     cmd: mvn clean
   listen: "build it"
 
-# build the project
-- name: build artifact
+- name: Build an artifact by maven
   shell:
     chdir: "{{repo_dir}}"
     cmd: mvn package
   listen: "build it"
 
-# copy the artiface to the local machine
-- name: fetch file
+- name: Fetch the artifact file to the local machine
   synchronize:
     mode: pull
     src: "{{target_file}}"
     dest: "{{archive_file}}"
   listen: "build it"
 
-# backup the artiface to the local machine
-- name: backup artifact
+- name: Backup the artifact on the local machine
   synchronize:
     src: "{{archive_file}}"
     dest: "{{archive_dir}}/{{ansible_date_time.iso8601_basic_short}}.war"
