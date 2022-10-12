@@ -10,22 +10,23 @@
     - maven
     - git
 
-- name: Ensure maven package is present
-  apt:
-    name: maven
-    state: present
-    update_cache: true
-
-- name: Ensure git package is present
-  apt:
-    name: git
-    state: present
-    update_cache: true
-
 - name: Clone a github repository boxfuse
   git:
-    repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-    dest: /root/boxfuse
+    repo: "{{remote_repo}}"
+    dest: "{{repo_dir}}"
     clone: true
     update: true
-  register: git_status
+  notify:
+    - clean maven
+    - build artifact
+    - fetch file
+    - backup artifact
+
+- name: Check the artifact exists
+  stat:
+    path: "{{repo_dir}}/{{target_file}}"
+  notify:
+    - clean maven
+    - build artifact
+    - fetch file
+    - backup artifact
