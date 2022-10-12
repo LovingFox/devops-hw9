@@ -1,0 +1,15 @@
+---
+- name: build an artifact
+  hosts: host1
+  become: true
+
+  roles:
+    - builder
+
+
+- name: deploy an artifact
+  hosts: host2
+  become: true
+
+  roles:
+    - webserver
