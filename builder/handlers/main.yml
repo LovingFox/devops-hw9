@@ -1,2 +1,23 @@
 ---
 # handlers file for builder
+- name: clean maven
+  shell:
+    chdir: "{{repo_dir}}"
+    cmd: mvn clean
+
+- name: build artifact
+  shell:
+    chdir: "{{repo_dir}}"
+    cmd: mvn package -f "{{repo_dir}}/{{target_file}}"
+
+- name: fetch file
+  synchronize:
+    src: "{{repo_dir}}/{{target_file}}"
+    dest: "{{archive_dir}}/{{target_file}}"
+    flat: true
+
+- name: backup artifact
+  synchronize:
+    src: "{{archive_dir}}/{{target_file}}"
+    dest: "{{archive_dir}}/{{ansible_date_time.iso8601_basic_short}}.war"
+  delegate_to: localhost

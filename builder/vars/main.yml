@@ -1,2 +1,6 @@
 ---
 # vars file for builder
+remote_repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+repo_dir: /root/boxfuse
+target_file: hello.war
+archive_dir: /root/

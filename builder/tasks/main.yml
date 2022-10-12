@@ -1,2 +1,31 @@
 ---
 # tasks file for builder
+- name: Ensure packages are present
+  apt:
+    name: "{{item}}"
+    state: present
+    update_cache: true
+  with_items:
+    - default-jre
+    - maven
+    - git
+
+- name: Ensure maven package is present
+  apt:
+    name: maven
+    state: present
+    update_cache: true
+
+- name: Ensure git package is present
+  apt:
+    name: git
+    state: present
+    update_cache: true
+
+- name: Clone a github repository boxfuse
+  git:
+    repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+    dest: /root/boxfuse
+    clone: true
+    update: true
+  register: git_status
