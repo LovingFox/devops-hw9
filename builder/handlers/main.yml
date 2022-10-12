@@ -14,7 +14,6 @@
   synchronize:
     src: "{{target_file}}"
     dest: "{{archive_file}}"
-    flat: true
 
 - name: backup artifact
   synchronize:
