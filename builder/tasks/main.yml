@@ -24,7 +24,7 @@
 
 - name: Check the artifact exists
   stat:
-    path: "{{repo_dir}}/{{target_file}}"
+    path: "{{target_file}}"
   notify:
     - clean maven
     - build artifact
