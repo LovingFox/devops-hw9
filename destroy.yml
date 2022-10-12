@@ -4,7 +4,7 @@
   become: true
 
   tasks:
-    - name: Ensure default-jre package is NOT present
+    - name: Ensure packages are NOT present
       apt:
         name: "{{item}}"
         state: absent
@@ -27,7 +27,7 @@
     - name: Ensure tomcat is stopped
       service:
         name: tomcat9.service
-        state: started
+        state: stopped
 
     - name: Check webapps is absent
       file:
