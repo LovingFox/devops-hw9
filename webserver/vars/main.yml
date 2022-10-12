@@ -1,6 +1,6 @@
 ---
 # vars file for webserver
-artifact_file: "/root/hello-1.0.war"
+archive_file: "/root/hello-1.0.war"
 web_dir: "/var/lib/tomcat9/webapps"
 web_root_dir: "{{web_dir}}/ROOT"
 web_root_file: "{{web_dir}}/ROOT.war"

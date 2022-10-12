@@ -13,7 +13,7 @@
 
 - name: Check new artifact exists
   stat:
-    path: "{{artifact_file}}"
+    path: "{{archive_file}}"
   delegate_to: localhost
   register: artifact_file
   changed_when: artifact_file.stat.exists
